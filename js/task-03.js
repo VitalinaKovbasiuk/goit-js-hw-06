@@ -13,18 +13,40 @@ const images = [
   },
 ];
 
+// Напиши скрипт для створення галереї зображень на підставі масиву даних. 
+// HTML містить список ul.gallery.
 
-// const categoriesEl = document.querySelector('#categories');
-// const categoriesItems = categoriesEl.children;
-// console.log("Number of categories:", categoriesItems.length);
+// <ul class="gallery"></ul>
+
+// Використовуй масив об'єктів images для створення елементів <img>, вкладених в <li>. 
+// Для створення розмітки використовуй шаблонні рядки і метод insertAdjacentHTML().
+
+// Усі елементи галереї повинні додаватися в DOM за одну операцію додавання.
+// Додай мінімальне оформлення галереї флексбоксами або грідами через CSS класи.
+
+// const galleryEl = document.querySelector('.gallery');
+
+// const itemEl = (image) => images
+// .map(({url, alt}) => `<li class="item__gallery"><img class = "gallery__img" src = ${url} alt=${alt}></li>`)
+// .join('');
+
+// console.log(itemEl(images));
 
 
-// const categoryElements = document.querySelectorAll('.item');
-// for (let i = 0; i < categoryElements.length; i += 1) {
-//     const categoryEl = categoryElements[i].children;
-//     const categoryElTitle = categoryEl[0].textContent;
-//     const categoryElLength = categoryEl[1].querySelectorAll('li').length
 
-//     console.log("Category:", categoryElTitle);
-//     console.log("Elements:", categoryElLength);
-// }
+const itemEl = (images) => images
+.reduce((acc, {url, alt}) => acc + `<li class="item__gallery"><img class = "gallery__img" src = ${url} alt=${alt}></li>`, '')
+
+const insertListItem = (string) => {
+const galleryEl = document.querySelector('.gallery');
+  galleryEl.insertAdjacentHTML("afterbegin", string);
+}
+
+console.log(itemEl(images));
+insertListItem(itemEl(images));
+
+
+
+
+
+
