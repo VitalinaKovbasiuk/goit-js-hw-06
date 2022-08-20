@@ -6,3 +6,30 @@
 // збери значення полів в об'єкт, де ім'я поля буде ім'ям властивості, а значення поля - значенням властивості. 
 // Для доступу до елементів форми використовуй властивість elements.
 // 5.Виведи об'єкт із введеними даними в консоль і очисти значення полів форми методом reset.
+
+
+
+
+    const form = document.querySelector('.login-form');
+
+    form.addEventListener('submit', onFormSubmit);
+
+    function onFormSubmit(event) {
+        event.preventDefault();
+
+        const formData = new FormData(event.currentTarget);
+
+        formData.forEach((value, name) => {
+            console.log('onFormSubmit -> name', name);
+            console.log('onFormSubmit -> value', value);
+        })
+    const formElements = event.currentTarget.elements;
+    const email = formElements.email;
+    const password= formElements.password;
+
+        if (email.value === '' || password.value === '') {
+            return alert('Заповни форму!');
+        }
+
+        form.reset();
+    }
