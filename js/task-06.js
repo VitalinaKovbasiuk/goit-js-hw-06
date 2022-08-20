@@ -37,21 +37,35 @@
 //     }
 //   };
 
-const input = document.querySelector('#validation-input');
-input.addEventListener('blur', onInputBlur);
+// const input = document.querySelector('#validation-input');
+// input.addEventListener('blur', onInputBlur);
 
-function onInputBlur(event) {
-const inputText = event.currentTarget;
-const InputLength = Number(inputText.dataset.length);
+// function onInputBlur(event) {
+// const inputText = event.currentTarget;
+// const InputLength = Number(inputText.dataset.length);
 
-if (inputText.value.length === InputLength) {
-    input.classList.add('valid');
-    input.classList.remove('invalid');
+// if (inputText.value.length === InputLength) {
+//     input.classList.add('valid');
+//     input.classList.remove('invalid');
+// }
+// else {
+//     input.classList.add('invalid');
+//     input.classList.remove('valid');
+// }
+// } 
+
+const inputRef = document.querySelector('#validation-input');
+inputRef.addEventListener('blur', OnInputBlur);
+
+function OnInputBlur(event) {    
+    if (!(event.target.value.length - inputRef.dataset.length)) {   
+        inputRef.classList.remove("invalid");
+        inputRef.classList.add("valid");
+    }
+    else { 
+        inputRef.classList.remove("valid");
+        inputRef.classList.add("invalid");
+    }    
 }
-else {
-    input.classList.add('invalid');
-    input.classList.remove('valid');
-}
-} 
 
 
