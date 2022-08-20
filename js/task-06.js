@@ -24,3 +24,34 @@
 // #validation-input.invalid {
 //   border-color: #f44336;
 // }
+
+
+// document.getElementById("validation-input").onblur = function () {
+//     console.log(this.value.length);
+//     if (this.getAttribute("data-length") > this.value.length) {
+//       this.classList.remove("valid");
+//       this.classList.add("invalid");
+//     } else {
+//       this.classList.remove("invalid");
+//       this.classList.add("valid");
+//     }
+//   };
+
+const input = document.querySelector('#validation-input');
+input.addEventListener('blur', onInputBlur);
+
+function onInputBlur(event) {
+const inputText = event.currentTarget;
+const InputLength = Number(inputText.dataset.length);
+
+if (inputText.value.length === InputLength) {
+    input.classList.add('valid');
+    input.classList.remove('invalid');
+}
+else {
+    input.classList.add('invalid');
+    input.classList.remove('valid');
+}
+} 
+
+
